@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>推荐文章</title>
+</head>
+<body>
+{% load category %}
+{% get_hot_post as post_list1 %}
+{% for post in post_list1 %}
+    <ul>
+        <li><a href="{% url 'blog:post_detail' post.id %}">{{ post.title }}</a></li>
+    </ul>
+{% endfor %}
+</body>
+</html>

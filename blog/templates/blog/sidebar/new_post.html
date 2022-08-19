@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load category %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新文章</title>
+</head>
+<body>
+{% get_new_post as post_list %}
+{% for post in post_list %}
+    <ul>
+        <li><a href="{% url 'blog:post_detail' post.id %}">{{ post.title }}</a></li>
+    </ul>
+{% endfor %}
+</body>
+</html>

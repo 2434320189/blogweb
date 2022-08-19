@@ -1,0 +1,45 @@
+{% extends 'users/user_profile.html' %}
+{% load static %}
+
+{% block title %}
+    <title>{{ user.username }}已发布的文章</title>
+{% endblock title %}
+
+{% block content %}
+<div class="tabs">
+    <ul>
+        <li class="is-active"><a>已发布的文章</a></li>
+        <!-- <li><a>草稿箱</a></li> -->
+    </ul>
+</div>
+<div class="content">
+    <table class="table">
+        <thead>
+            <tr>
+                <th><abbr title="Position">序号</abbr></th>
+                <th>标题</th>
+                <th><abbr title="Played">发布日期</abbr></th>
+            </tr>
+            <tbody>
+
+                {% if article_list %}
+                {% for article in article_list %}
+                    <tr>
+                      <th>{{ forloop.counter }}</th>
+                      <td><a href="{% url 'blog:post_detail' article.id %}" title="{{ article.title }}">{{ article.title }}</a>
+                      </td>
+                      <td>{{ article.pub_date|date }}</td>
+                      <td><a href="{% url 'users:delete_page' article.id %}">删除</a></td>
+
+                    </tr>
+                {% endfor %}
+                {% else %}
+                    <p>还没有发布任何文章。</p>
+                {% endif %}
+            </tbody>
+    </table>
+</div>
+    <script src="{% static 'layer/layer/layer.js' %}"></script>
+
+
+{% endblock content %}

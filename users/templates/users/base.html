@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block head %}
+
+    {% endblock head %}
+
+    <link rel="stylesheet" href="{% static 'users/css/bulma.css' %}">
+    <style>
+        {#将返回的错误值变为红色#}
+        .errorlist{
+            color: red;
+        }
+        .div1{
+
+
+        }
+    </style>
+</head>
+<body>
+
+<form method="post" >
+
+<div class="div1"  >
+
+    {% block content %}
+
+    {% endblock content %}
+
+</div>
+
+</form>
+
+</body>
+</html>
